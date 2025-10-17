@@ -1,0 +1,105 @@
+namespace SixthLab
+{
+    public class BankAccount
+    {
+        private decimal _balance;
+        public BankAccount(decimal _balance)
+        {
+            this._balance = _balance;
+        }
+
+        public decimal GetBalance()
+        {
+            return _balance;
+        }
+        public void SetBalance(decimal _balance)
+        {
+            this._balance = _balance;
+        }
+        public bool Withdraw()
+        {
+            decimal _value_of_withdraw;
+            do
+            {
+                Console.Write("Введите сумму, которую хотите снять: ");
+                string? stringi = Console.ReadLine();
+                if (!decimal.TryParse(stringi, out _value_of_withdraw) | _value_of_withdraw < 0)
+                {
+                    Console.WriteLine("Буквы снять нельзя, введите сумму.");
+                }else{
+                     break; }
+            } while (true);
+            if (GetBalance() > 0 & _value_of_withdraw <= GetBalance())
+            {
+                SetBalance(GetBalance() - _value_of_withdraw);
+                Console.WriteLine("Вы сняли: " + _value_of_withdraw+ " грошей");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Денег нет, но вы держитесь");
+                Withdraw();
+                return false;
+            }
+        }
+        public void Deposit()
+        {
+            decimal deposit;
+            do {
+                Console.Write("Введите сумму, которую хотите внести в банк: ");
+                string? stringi = Console.ReadLine();
+                if ((!decimal.TryParse(stringi, out deposit)) | deposit < 0)
+                {
+                    Console.WriteLine("Банк можно пополнить только деньгами");
+                }
+                else
+                {
+                    break;
+                }
+                     } while(true);
+            SetBalance(GetBalance() + deposit);
+        }
+        public void DisplayInfo()
+        {
+            Console.WriteLine("Денег на балансе: " + GetBalance() + " грошей");
+        }
+
+
+    }
+    public class Lab
+    {
+        static decimal _balance = 0;
+        static decimal newBalance()
+        {
+            do
+            {
+                Console.Write("Задайте баланс для банка: ");
+                string? stringi = Console.ReadLine();
+
+                if (!decimal.TryParse(stringi, out _balance) | _balance < 0)
+                {
+                    Console.WriteLine("Бананы в банке не храняться, введите сумму денег(число).");
+                }
+                else {
+                    break; }
+            } while (true);
+            return _balance;
+        }
+        public static void Main(string[] args)
+        {
+            newBalance();
+            BankAccount bankAcc = new BankAccount(_balance);
+            bankAcc.DisplayInfo();
+
+            bankAcc.Withdraw();
+            bankAcc.DisplayInfo();
+
+            bankAcc.Deposit();
+            bankAcc.DisplayInfo();
+
+            bankAcc.SetBalance(newBalance());
+            Console.WriteLine("Новый баланс банка: " + bankAcc.GetBalance()+ " грошей");
+        }
+
+    }
+}
