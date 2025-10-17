@@ -1,0 +1,72 @@
+namespace SeventhLab
+{
+
+    public class Animal
+    {
+        private string Name;
+        public void SetName(string Name)
+        {
+            this.Name = Name;
+        }
+        public string GetName()
+        {
+            return Name;
+        }
+        public void Speak()
+        {
+            Console.WriteLine("Животное: *Базарит*");
+        }
+    }
+    public class Dog : Animal
+    {
+        public new void Speak()
+        {
+            Console.WriteLine("Собака: *гав-гав-гав*");
+        }
+    }
+    public class Cat : Animal
+    {
+        public new void Speak()
+        {
+            Console.WriteLine("Кот: *мяу-мяу-мяу*");
+        }
+    }
+    public class Lab()
+    {
+        static string nameGiven()
+        {
+            string name;
+            do
+            {
+                Console.Write("Введите имя для животного: ");
+                name = Console.ReadLine();
+                if (name.Equals("")) { }
+                else { break; } 
+            } while (true);
+            
+            return name;
+        }
+        public static void Main(string[] args)
+        {
+
+            Animal animal = new Animal();
+            
+            animal.SetName(nameGiven());
+            animal.Speak();
+
+            Console.WriteLine("Имя животного: " + animal.GetName());
+
+            Dog dog = new Dog();
+            dog.SetName(nameGiven());
+            dog.Speak();
+
+            Console.WriteLine("Имя собаки: " + dog.GetName());
+
+            Cat cat = new Cat();
+            cat.SetName(nameGiven());
+            cat.Speak();
+
+            Console.WriteLine("Имя кота: " + cat.GetName());
+        }
+    }
+}
