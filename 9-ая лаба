@@ -1,0 +1,22 @@
+namespace NinethLab
+{
+    public class Lab
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("1 Вариант.\n " +
+            "1. Создайте программу, которая открывает текстовый файл(input.txt) и подсчитывает количество строк в нем.\n" +
+            "Выведите результат на консоль.");
+            
+            string path = @"C:\Users\написать_имя_пользователя\Desktop\input.txt";
+            int _count_of_lines;
+            if (File.Exists(path))
+            {
+                string[] stringi = File.ReadAllLines(path);
+                for (_count_of_lines = 0; _count_of_lines < stringi.Length; _count_of_lines++)
+                {}
+                Console.WriteLine("строк в файле: " + _count_of_lines);
+            }else{ Console.WriteLine("Файла не существует"); }
+        }
+    }
+}
