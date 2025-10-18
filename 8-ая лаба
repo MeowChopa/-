@@ -1,0 +1,85 @@
+namespace EigthLab
+{
+    public class Shapes
+    {
+        public virtual double CalculateArea()
+        {
+            return 0;
+        }
+    }
+        public class Square : Shapes
+        {
+            private double x;
+            private double y;
+            public Square(double x, double y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+            public override double CalculateArea()
+            {
+                double area = x * y;
+                Console.WriteLine("Площадь квадрата равна: " + area);
+                return area;
+            }
+        }
+        class Trapezoid : Shapes
+        {
+            private double a;
+            private double b;
+            private double h;
+
+            public Trapezoid(double a, double b, double h)
+            {
+                this.a = a;
+                this.b = b;
+                this.h = h;
+            }
+            public override double CalculateArea()
+            {
+                double area = ((a + b) / 2) * h;
+                Console.WriteLine("Площадь трапеции равна: " + area);
+                return area;
+            }
+        }
+    class Circle : Shapes
+    {
+        private double radius;
+        public Circle(double radius)
+        {
+            this.radius = radius;
+        }
+        public override double CalculateArea()
+        {
+            double area = Math.PI * Math.Pow(radius, 2);
+            Console.WriteLine("Площадь круга равна: " + area);
+            return area;
+        }
+    }
+    public class Lab
+    {
+
+        public static void Main()
+        {
+            Console.WriteLine("1. Создайте базовый класс Shapes{}, который содержит метод CalculateArea(), который будет считать площадь фигуры.\n" +
+            "2. Создайте производные от этого класса классы Square{}, Trapezoid{} и Circle{}.\n " +
+            "3. Переопределите метод для этих классов.\n" +
+            "4. Создайте массив объектов типа Shapes и заполните его экземплярами Square, Trapezoid, Circle." +
+            "5. Вызвать метод CalculateArea() для каждого объекта используя массив.");
+
+            Shapes[] shape = new Shapes[]
+            {
+                new Square(1, 2),
+                new Trapezoid(2, 2, 3),
+                new Circle(3)
+            };
+
+            for(int i = 0; i< shape.Length; i++)
+            {
+                shape[i].CalculateArea();
+            }
+        }
+
+
+    } 
+}
