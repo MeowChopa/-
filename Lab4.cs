@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics;
 namespace FourthLan
 {
     internal class Lab() {
@@ -127,5 +124,6 @@ namespace FourthLan
             Min_of_massive();
         }
     }
+
 
 }
