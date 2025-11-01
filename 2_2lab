@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//1. Напишите программу, которая запрашивает у пользователя номер дня недели (от 1 до 7) и выводит его название (например, 1 - "Понедельник", 2 - "Вторник" и т.д.).
+string Day_of_week(string str,int _index){
+    do{
+    cout<<"Введите индекс дня недели(от 1 до 7)"<<endl;
+    cin>>_index;
+    if(cin.fail() || _index < 1 || _index > 7){
+        cout<<"Некорректный индекс недели"<<endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');   
+    }
+    else{
+        switch(_index){
+            case 1: str = to_string(_index) + "- Понедельник"; break;
+            case 2: str = to_string(_index) + "- Вторник"; break;
+            case 3: str = to_string(_index) + "- Cреда"; break;
+            case 4: str = to_string(_index) + "- Четверг"; break;
+            case 5: str = to_string(_index) + "- Пятница"; break;
+            case 6: str = to_string(_index) + "- Суббота"; break;
+            case 7: str = to_string(_index) + "- Воскресенье"; break;
+            default: str = "Четботосенье";
+            break;
+        }
+        break;
+    }
+  }
+   while(true);
+
+    return str;
+}
+
+int main(){
+    string stringi;
+    int index;
+ 
+    cout<<Day_of_week(stringi,index)<<endl;
+    return 0;
+}
