@@ -1,0 +1,92 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//метод поиска гипотенузы
+/*1. Пользователь вводит значения катетов прямоугольного треугольника int A, B.
+ Вывести в консоль значение гипотенузы треугольника.*/
+int hypatinosis(int a,int b){
+    int c = sqrt(pow(a,2) + pow(b,2)); 
+    cout<<"Гипотенуза равна: "<<c<<endl;
+    return c;
+}
+
+/*2. Пользователь вводит int cost, weight. Вывести в консоль сколько заплатит покупатель за определённый вес яблок.*/
+int cost_per_weight(int cost, int weight){
+    int _FINAL_COST = cost * weight;
+    cout<<"Стоимость "<<weight<<" кг яблок: "<<_FINAL_COST<<" грошей"<<endl;
+    return _FINAL_COST;
+}
+
+/*3. Пользователь вводит int m, t1, t2. Вывести в консоль какое количество теплоты было израсходовано для нагрева объекта от температуры t1 до t2.*/
+int amount_of_heat(int c, int m, int t1, int t2){
+    int _DELTA_T = t2-t1;
+    int Q = c*m*_DELTA_T;
+    cout<<"Кол-во теплоты для нагрева вещества от "<<t1<<" до "<<t2<<" равно: "<<Q<<endl;
+    return Q;
+}
+
+//Метод проверки типа данных(проверка на дурака)
+int type_of(int x){
+
+    do{
+    cout<<"Введите значение переменной: ";
+    cin>>x;
+
+    if(cin.fail() || x <= 0){
+        cout<<"Введено некорректное значение"<<endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    }
+    else{ break;}
+    }while(true);
+    return x;
+}
+//Метод вызова
+int main(){
+    setlocale(LC_ALL,"RU");
+    cout<<"1-ый вариант, 1-ая лаба"<<endl;
+
+        int Side_one;
+        int Side_second;
+        int Cost;
+        int Weight;
+        int Mass;
+        int _Temp1;
+        int _Temp2;
+        int _spec_heat_cap;
+
+    cout<<"1. Пользователь вводит значения катетов прямоугольного треугольника int A, B.\nВывести в консоль значение гипотенузы треугольника."<<endl;
+    cout<<"Значение первого катета:"<<endl;
+    Side_one = type_of(Side_one);
+
+    cout<<"Значение второго катета:"<<endl;
+    Side_second = type_of(Side_second);
+    hypatinosis(Side_one,Side_second);
+
+    cout<<"2. Пользователь вводит int cost, weight.\nВывести в консоль сколько заплатит покупатель за определённый вес яблок."<<endl;
+
+    cout<<"Значение стоимости килограмма яблок:"<<endl;
+    Cost = type_of(Cost);
+
+    cout<<"Значение массы яблок:"<<endl;
+    Weight = type_of(Weight);
+    cost_per_weight(Cost,Weight);
+
+    cout<<"3. Пользователь вводит int m, t1, t2.\nВывести в консоль какое количество теплоты было израсходовано для нагрева объекта от температуры t1 до t2."<<endl;
+
+    cout<<"Значение массы вещества:"<<endl;
+    Mass = type_of(Mass);
+
+    cout<<"Значение температуры(от):"<<endl;
+    _Temp1 = type_of(_Temp1);
+
+    cout<<"Значение температуры(до):"<<endl;
+    _Temp2 = type_of(_Temp2);
+
+    cout<<"Значение удельной теплоёмкости:"<<endl;
+    _spec_heat_cap = type_of(_spec_heat_cap);
+    amount_of_heat(_spec_heat_cap,Mass,_Temp1,_Temp2);
+
+    return 0;
+}
