@@ -1,0 +1,90 @@
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+//
+int type_of(){
+    int x = 0;
+    do{
+    cout<<"Введите значение переменной: ";
+    cin>>x;
+
+    if(cin.fail() || x <= 0){
+        cout<<"Введено некорректное значение"<<endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    }
+    else{ break;}
+    }while(true);
+
+    return x;
+}
+
+void devisible(int n){
+    int* massive = new int[n];
+    for(int i = 0; i < n; i++){
+        massive[i] = type_of();
+    }
+    for(int j = 0; j < n; j++){
+        if((massive[j] % 3 == 0) && (massive[j] % 6 != 0)){
+            cout<<to_string(massive[j]) + " ";
+        }
+    }
+    delete[] massive;
+}
+
+void extremum(int n){
+    int min = numeric_limits<int>::max();
+    int max = numeric_limits<int>::min();
+    int* massive = new int[n];
+
+    for(int i = 0; i < n; i++){
+        massive[i] = type_of();
+    }
+    for(int j = 0; j < n; j++){
+        if(massive[j] > max){
+            max = massive[j];
+        }
+        if(massive[j] < min){
+            min = massive[j];
+        }
+    }
+    cout<<max<<endl;
+    cout<<min<<endl;
+    delete[] massive;
+}
+
+void output_matrix(int m, int n){
+    int** massive = new int*[n];
+
+    for(int i = 0; i < n; i++){
+        massive[i] = new int[m];
+    }
+    for(int k = 0; k < n; k++){
+        for(int j = 0; j < m; j++){
+        massive[k][j] = type_of();
+        }
+    }
+    for(int h = 0; h < n; h++){
+        for(int g = 0; g < m; g++){  
+        if(h == 1){
+            cout<<to_string(massive[h][g]) + " ";
+        }
+        }
+    }
+    delete[] massive;
+}
+
+int main(){
+    setlocale(LC_ALL, "RU");
+    cout<<"первое задание: Создайте динамический целочисленный массив размерностью n. Вывести в консоль все числа, которые делятся на 3, но не делятся на 6."<<endl;
+    devisible(type_of());
+
+    cout<<"второе задание:  Создайте динамический целочисленный массив размерностью n. Вывести в консоль наибольший и наименьший элементы массива."<<endl;
+    extremum(type_of());
+
+    cout<<"третье задание: Создайте динамическую целочисленную матрицу n на m. Вывести вторую строку матрицы."<<endl;
+    output_matrix(type_of(),type_of());
+
+    return 0;
+}
