@@ -1,0 +1,56 @@
+#include<iostream>
+#include<cmath>
+#include<string.h>
+#include<string>
+#include<windows.h>
+using namespace std;
+
+int str_Length(string str){
+    return str.length();
+}
+
+string reverse_str(string str){
+    string FINAL_STRING = ""; 
+    for(int i = str.length()-1; i >= 0; i--){
+        FINAL_STRING += str[i];
+    }
+    
+    return FINAL_STRING;
+}
+
+int count_of_words(string str){
+    int WORD_COUNT = 0;
+    if(!str.empty()){
+        WORD_COUNT+=1;
+    }
+    for(int i = 0; i < str.length(); i++){
+        if(str[i] == ' ' && str[i+1] != ' '){
+            WORD_COUNT += 1;
+        }
+    }
+
+    return WORD_COUNT;
+}
+
+string input_str(string str){
+    getline(cin, str);
+    if(str.empty()){
+        return "";
+    }
+    return str;
+}
+
+int main(){
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+
+    string str;
+    string str_2;
+    string str_3;
+    
+    cout<<str_Length(input_str(str))<<endl;
+    cout<<reverse_str(input_str(str_2))<<endl;
+    cout<<count_of_words(input_str(str_3))<<endl;
+    
+    return 0;
+}
